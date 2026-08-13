@@ -115,7 +115,9 @@ resource "azurerm_network_security_rule" "deny_internet_management" {
   source_address_prefix      = "Internet"
   destination_address_prefix = "*"
 
-  description = "CIS Azure v3.0.0 6.1/6.2 and NIST AC-17: SSH, RDP, WinRM and database ports are never reachable from the internet. Remote administration goes through Bastion or a jump path, not a public listener."
+  # Remote administration goes through Bastion or a jump path, never a public
+  # listener. (Azure caps rule descriptions at 140 chars, hence the short form.)
+  description = "CIS Azure v3.0.0 6.1/6.2, NIST AC-17: management ports unreachable from the internet"
 }
 
 # Restating Azure's implicit AllowVnetInBound above the terminal deny below.
@@ -139,7 +141,9 @@ resource "azurerm_network_security_rule" "allow_vnet_inbound" {
   source_address_prefix      = "VirtualNetwork"
   destination_address_prefix = "VirtualNetwork"
 
-  description = "NIST SC-7: intra-VNet traffic permitted explicitly so that the terminal deny below is a real default-deny rather than an outage. East-west segmentation beyond this is a workload responsibility."
+  # Explicit so the terminal deny below is a real default-deny rather than an
+  # outage. East-west segmentation beyond this is a workload responsibility.
+  description = "NIST SC-7: permit intra-VNet traffic ahead of the terminal deny-all"
 }
 
 # SC-7: an explicit terminal deny. Redundant with Azure's implicit 65500 rule by

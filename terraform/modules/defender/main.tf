@@ -157,6 +157,11 @@ resource "azurerm_security_center_workspace" "this" {
 # the Azure Monitor Agent delivered by policy. This resource covers the legacy
 # setting; the AMA rollout is handled by the DINE initiative in the logging
 # module. Both exist because tenants are mid-migration for a long time.
+# Deprecated in azurerm v4 and removed in v5: Microsoft is retiring the Log
+# Analytics agent auto-provisioning path in favour of agentless scanning and
+# the Azure Monitor Agent. Kept while the provider is pinned ~> 4.0 because
+# it is still the only Terraform surface for the setting; the migration is
+# tracked in DEVLOG.md rather than silently deferred.
 resource "azurerm_security_center_auto_provisioning" "this" {
   auto_provision = var.enable_auto_provisioning ? "On" : "Off"
 }

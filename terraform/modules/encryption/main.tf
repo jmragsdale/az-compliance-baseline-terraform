@@ -40,7 +40,7 @@ resource "azurerm_key_vault" "core" {
   # FIPS 140-2 Level 3 HSM backing.
   sku_name = "premium"
 
-  enable_rbac_authorization = true
+  rbac_authorization_enabled = true
 
   # CP-9 / SC-12: irreversible on purpose.
   purge_protection_enabled   = true

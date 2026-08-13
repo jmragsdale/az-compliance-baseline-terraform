@@ -167,8 +167,10 @@ resource "azurerm_storage_management_policy" "archive" {
       }
 
       version {
-        tier_to_cool_after_days_since_creation    = 30
-        tier_to_archive_after_days_since_creation = 180
+        # The version/snapshot blocks use the change_tier_* spelling; only
+        # base_blob uses tier_to_*. Same concept, different argument names.
+        change_tier_to_cool_after_days_since_creation    = 30
+        change_tier_to_archive_after_days_since_creation = 180
       }
     }
   }
@@ -187,8 +189,7 @@ resource "azurerm_monitor_diagnostic_setting" "archive_account" {
   enabled_log { category = "StorageWrite" }
   enabled_log { category = "StorageDelete" }
 
-  metric {
+  enabled_metric {
     category = "Transaction"
-    enabled  = true
   }
 }

@@ -98,3 +98,29 @@ removed your ability to recover from a mistyped retention period. It is surfaced
 in `post_apply_manual_steps`, tagged on the resource, flagged by a custom
 Defender assessment, and called out in the README - which is about as loud as an
 unlocked policy can be made without doing the irreversible thing for you.
+
+## 2026-08-13 - First real `terraform validate`
+
+Authored in a sandbox with the provider registry blocked, so this was the first
+time the config met the actual azurerm schema. Four hard errors, all in the
+category of "plausible argument name that does not exist":
+
+- **`azurerm_storage_management_policy`** - the `version` and `snapshot` blocks
+  spell it `change_tier_to_cool_after_days_since_creation`; only `base_blob`
+  uses the `tier_to_*` prefix. Same concept, different names, no way to catch it
+  without the schema.
+- **NSG rule descriptions cap at 140 characters.** Two rules carried the full
+  framework rationale inline and blew the limit. The reasoning moved into
+  comments, where it belongs anyway - a comment has no length limit and the
+  description field is not where an auditor reads justifications.
+- **`enable_rbac_authorization`** is renamed `rbac_authorization_enabled`, and
+  the `metric` block inside diagnostic settings is superseded by
+  `enabled_metric`. Both still work under `~> 4.0` but are removed in v5.
+
+`azurerm_security_center_auto_provisioning` stays, deprecated, with a comment:
+it is still the only Terraform surface for the setting, and Microsoft is moving
+the capability to agentless scanning. Documented rather than silently deferred.
+
+The three deprecation warnings were fixed rather than tolerated, because a repo
+whose whole premise is "the code backs the compliance claim" cannot ship with a
+validate step that prints warnings nobody reads.
