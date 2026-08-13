@@ -1,0 +1,53 @@
+# Copy to terraform.tfvars and fill in. Placeholder GUIDs below are all zeros on
+# purpose -- there are no real tenant identifiers anywhere in this repository.
+
+subscription_id = "00000000-0000-0000-0000-000000000000"
+tenant_id       = "00000000-0000-0000-0000-000000000000"
+
+fedramp_baseline = "moderate"
+deployment_scope = "management_group"
+
+name_prefix        = "cmpbase"
+system_id          = "SYS-0001"
+primary_location   = "usgovvirginia"
+secondary_location = "usgovtexas"
+azure_environment  = "usgovernment"
+
+allowed_locations = ["usgovvirginia", "usgovtexas"]
+required_tags     = ["owner", "data-classification", "system-id"]
+
+# Stage the rollout: Audit first, confirm the blast radius, then Deny.
+guardrail_effect              = "Audit"
+policy_assignment_enforcement = "Default"
+
+# Verify these against your tenant before uncommenting:
+#   az policy set-definition list --query "[?contains(displayName,'CIS Microsoft Azure Foundations Benchmark v3')].name" -o tsv
+# builtin_initiative_id_overrides = {
+#   cis_azure_v3_0_0 = "00000000-0000-0000-0000-000000000000"
+# }
+
+subscription_associations = {
+  # prod    = ["00000000-0000-0000-0000-000000000000"]
+  # nonprod = ["00000000-0000-0000-0000-000000000000"]
+}
+
+security_contact_emails   = ["soc@example.gov"]
+alert_notification_emails = ["soc@example.gov"]
+
+# Every one of these costs money. All default to false.
+enable_defender_for_cloud = false
+enable_defender_servers   = false
+enable_defender_storage   = false
+enable_ddos_protection    = false
+enable_nsg_flow_logs      = false
+
+policy_exemptions = {
+  # "legacy-tls-appliance" = {
+  #   policy_assignment_key = "guardrails"
+  #   scope_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-legacy"
+  #   category              = "Mitigated"
+  #   justification         = "Vendor appliance pinned to TLS 1.1; compensating control is a TLS-terminating reverse proxy. POA&M-0042."
+  #   expires_on            = "2027-01-31T00:00:00Z"
+  #   policy_definition_reference_ids = ["storageMinTls"]
+  # }
+}

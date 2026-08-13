@@ -1,0 +1,11 @@
+# Trivy misconfiguration findings accepted with a written reason.
+#
+# The same rule applies here as in .checkov.yaml: an unexplained entry is how a
+# compliance repo quietly stops being one. Every line below names the control
+# tradeoff being made and where it is documented in the code.
+
+# The NSG flow log sink must accept traffic from the Network Watcher platform
+# service rather than only from inside the VNet, and Network Watcher delivery
+# authenticates with a shared key. Both are documented service constraints, not
+# oversights. See terraform/modules/network/flowlogs.tf.
+AVD-AZU-0011
