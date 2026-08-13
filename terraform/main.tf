@@ -150,8 +150,6 @@ module "defender" {
   location            = var.primary_location
   subscription_id     = var.subscription_id
 
-  fedramp_baseline = var.fedramp_baseline
-
   # Baseline-driven: P2 adds the agent-based vulnerability assessment and file
   # integrity monitoring that RA-5 and SI-7 expect at the High baseline.
   servers_subplan          = local.baseline.defender_servers_subplan
@@ -191,7 +189,6 @@ module "network" {
   unique_suffix       = local.unique
   resource_group_name = azurerm_resource_group.compliance.name
   location            = var.primary_location
-  subscription_id     = var.subscription_id
   azure_environment   = var.azure_environment
 
   deny_internet_egress    = var.deny_internet_egress

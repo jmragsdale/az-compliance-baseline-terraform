@@ -18,11 +18,6 @@ variable "location" {
   type        = string
 }
 
-variable "subscription_id" {
-  description = "Subscription GUID (used to scope flow logs and diagnostics)."
-  type        = string
-}
-
 variable "azure_environment" {
   description = "\"public\" or \"usgovernment\". Private DNS zone suffixes differ between clouds and getting this wrong produces private endpoints that resolve to nothing."
   type        = string

@@ -18,11 +18,6 @@ variable "subscription_id" {
   type        = string
 }
 
-variable "fedramp_baseline" {
-  description = "\"moderate\" or \"high\"."
-  type        = string
-}
-
 variable "servers_subplan" {
   description = "Defender for Servers plan tier. P1 = agentless posture. P2 adds vulnerability assessment, file integrity monitoring and threat detection (RA-5, SI-7). Baseline-driven."
   type        = string
