@@ -1,0 +1,77 @@
+{
+  "title": "Azure Compliance Baseline",
+  "titleFontSize": 78,
+  "mobileTitle": [
+    "Azure compliance",
+    "baseline"
+  ],
+  "eyebrow": "CLOUD GOVERNANCE",
+  "tagline": "Control mappings tied to real code.",
+  "mobileTagline": [
+    "Control mappings",
+    "tied to real code."
+  ],
+  "description": [
+    "An organization reference with explicit control mappings.",
+    "Terraform resources, examples and validation notes."
+  ],
+  "mobileDescription": [
+    "Mapped cloud controls and Terraform source.",
+    "Examples with explicit validation limits."
+  ],
+  "footerLeft": "TERRAFORM",
+  "footerMiddle": "AZURE / CLOUD GOVERNANCE",
+  "footerRight": "BASELINE / CONTROLS / EVIDENCE",
+  "diagram": [
+    "POLICY",
+    "CONTROL",
+    "EVIDENCE"
+  ],
+  "summary": "A Azure governance reference with Terraform implementations, framework mappings, deployment examples and documented validation limits.",
+  "cards": [
+    {
+      "slug": "controls",
+      "category": "CONTROL EVIDENCE",
+      "title": "Inspect the control matrix",
+      "lines": [
+        "Trace framework mappings to",
+        "the implementing resources."
+      ],
+      "footer": "CONTROL MATRIX / GENERATED",
+      "href": "CONTROLS.md"
+    },
+    {
+      "slug": "examples",
+      "category": "EVALUATION PATH",
+      "title": "Explore deployment examples",
+      "lines": [
+        "Review limited-scope setup before",
+        "organization-wide configuration."
+      ],
+      "footer": "EXAMPLES / DEPLOYMENT SCOPE",
+      "href": "examples/single-subscription/README.md"
+    },
+    {
+      "slug": "source",
+      "category": "IMPLEMENTATION",
+      "title": "Read the Terraform source",
+      "lines": [
+        "Inspect infrastructure declarations",
+        "and their configuration inputs."
+      ],
+      "footer": "SOURCE / REFERENCE CODE",
+      "href": "terraform/main.tf"
+    },
+    {
+      "slug": "limits",
+      "category": "VALIDATION SCOPE",
+      "title": "Read what is verified",
+      "lines": [
+        "Review recorded checks and",
+        "the unverified deployment limits."
+      ],
+      "footer": "CHECKS / DEPLOYMENT LIMITS",
+      "href": "#validation-scope"
+    }
+  ]
+}

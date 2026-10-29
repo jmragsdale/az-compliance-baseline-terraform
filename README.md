@@ -1,4 +1,53 @@
-# az-compliance-baseline-terraform
+<a id="az-compliance-baseline-terraform"></a>
+
+<a href="examples/single-subscription/README.md">
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/assets/readme/header-mobile.png">
+  <img src="docs/assets/readme/header.png" width="1440" alt="Azure Compliance Baseline. A Azure governance reference with Terraform implementations, framework mappings, deployment examples and documented validation limits.">
+</picture>
+</a>
+
+<p>
+  <a href="examples/single-subscription/README.md"><strong>Start here ↗</strong></a> &nbsp; / &nbsp;
+  <a href="terraform/main.tf">Source</a> &nbsp; / &nbsp;
+  <a href="#project-guide">Project guide</a> &nbsp; / &nbsp;
+  <a href="https://github.com/jmragsdale">Profile</a>
+</p>
+
+A Azure governance reference with Terraform implementations, framework mappings, deployment examples and documented validation limits.
+
+## Explore the project
+
+Open a card for source, examples or supporting documentation.
+
+<p>
+<a href="CONTROLS.md">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/controls-dark.png">
+  <img src="docs/assets/readme/controls-light.png" width="360" alt="Inspect the control matrix. Trace framework mappings to the implementing resources.">
+</picture>
+</a>
+<a href="examples/single-subscription/README.md">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/examples-dark.png">
+  <img src="docs/assets/readme/examples-light.png" width="360" alt="Explore deployment examples. Review limited-scope setup before organization-wide configuration.">
+</picture>
+</a>
+<a href="terraform/main.tf">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/source-dark.png">
+  <img src="docs/assets/readme/source-light.png" width="360" alt="Read the Terraform source. Inspect infrastructure declarations and their configuration inputs.">
+</picture>
+</a>
+<a href="#validation-scope">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/limits-dark.png">
+  <img src="docs/assets/readme/limits-light.png" width="360" alt="Read what is verified. Review recorded checks and the unverified deployment limits.">
+</picture>
+</a>
+</p>
+
+## Project guide
 
 Terraform that brings an Azure tenant into alignment with FedRAMP Rev 5, NIST SP 800-53 Rev 5 and CIS Microsoft Azure Foundations v3.0.0 — and a CI job that fails the build the moment a compliance claim stops matching the code behind it.
 
@@ -22,6 +71,9 @@ repo implements the *technical* controls, states plainly which ones need
 privileges you may not have, and refuses to hard-code a policy GUID it has not
 verified — because a green dashboard against the wrong benchmark version is
 worse than no dashboard.
+
+<details>
+<summary>Architecture flow (text)</summary>
 
 ```
 ┌─────────────────────────────┐   ┌──────────────────────────────┐   ┌─────────────────────────────┐
@@ -58,6 +110,8 @@ worse than no dashboard.
         │   delete · Defender pricing change · role assignment write · diagnostic setting delete     │
         └───────────────────────────────────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 Full-resolution diagram: [`az-compliance-baseline.svg`](az-compliance-baseline.svg)
 
@@ -137,6 +191,8 @@ training, personnel security, physical protection, most of planning and program
 management — that no amount of Terraform will ever satisfy.
 
 ---
+
+<a id="validation-scope"></a>
 
 ## ⚠️ What is and is not verified
 
@@ -290,3 +346,10 @@ pricing differs. Check the calculator before committing a budget.
 
 ⭐ **If this saved you an argument with an assessor, star the repo.** If it lost
 you one, open an issue — the failure modes are the interesting part.
+
+<details>
+<summary>README visual assets</summary>
+
+[Artwork sources and regeneration notes](docs/assets/readme/README.md).
+
+</details>
